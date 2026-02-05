@@ -1,3 +1,8 @@
+---
+description: テストの実行と結果の確認を行います。バックエンド、フロントエンド、E2Eテストに対応。
+allowed-tools: Bash, Read
+---
+
 # /test - テスト実行
 
 テストの実行と結果の確認を行います。
@@ -16,8 +21,33 @@
 | `frontend` | フロントエンドのテスト |
 | `e2e` | E2Eテスト |
 | `all` | 全テスト実行 |
+| （なし） | 自動判定（変更ファイルに応じて実行） |
 
-## バックエンドテスト
+## 実行手順
+
+1. オプションに応じてテスト対象を決定
+2. 対応するテストコマンドを実行
+3. 結果を報告
+
+## バックエンドテスト（api）
+
+### pytestによる自動テスト
+
+```bash
+cd backend
+
+# 仮想環境を有効化
+source venv/bin/activate  # Windows: venv\Scripts\activate
+
+# テスト実行
+pytest tests/ -v
+
+# 特定のテストのみ
+pytest tests/test_auth.py -v
+
+# カバレッジ付き
+pytest tests/ --cov=app --cov-report=html
+```
 
 ### 手動テスト
 
@@ -39,23 +69,7 @@ curl -X GET http://localhost:8000/users/me \
   -H "Authorization: Bearer <token>"
 ```
 
-### Pythonテスト（pytest）
-
-```bash
-# APIコンテナに入る
-docker exec -it <api-container> /bin/bash
-
-# テスト実行
-pytest tests/ -v
-
-# 特定のテストのみ
-pytest tests/test_auth.py -v
-
-# カバレッジ付き
-pytest tests/ --cov=app --cov-report=html
-```
-
-## フロントエンドテスト
+## フロントエンドテスト（frontend）
 
 ### ビルドテスト
 
@@ -75,6 +89,8 @@ npm run type-check
 ### ユニットテスト（Jest/Vitest）
 
 ```bash
+cd frontend
+
 # テスト実行
 npm run test
 
@@ -99,7 +115,7 @@ npm run test:watch
    - 各機能が正常に動作することを確認
    - エラー時に適切なメッセージが表示されること
 
-## E2Eテスト
+## E2Eテスト（e2e）
 
 ### テストシナリオ
 
@@ -165,4 +181,4 @@ npm run test:watch
 
 ## トラブルシューティング
 
-テスト失敗時は [troubleshooting.md](../troubleshooting.md) を参照。
+テスト失敗時は troubleshooting スキルを参照。

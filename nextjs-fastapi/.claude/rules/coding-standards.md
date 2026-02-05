@@ -1,3 +1,8 @@
+---
+name: coding-standards
+description: プロジェクトのコーディング規約。バックエンド(Python/FastAPI)とフロントエンド(Next.js/TypeScript)のディレクトリ構成、命名規則、コーディングパターンを定義。
+---
+
 # コーディング規約
 
 ## バックエンド (Python/FastAPI)
@@ -46,7 +51,6 @@ async def create_user(
     Returns:
         dict: レスポンスオブジェクト
     """
-    # 依存性の手動組み立て
     repository = UserRepository(db)
     service = UserService(repository, db)
 
@@ -77,7 +81,6 @@ class UserService:
         Raises:
             ValidationException: バリデーションエラーの場合
         """
-        # ビジネスロジックを実装
 ```
 
 **リポジトリ層（repositories/）:**
@@ -109,7 +112,6 @@ class UserCreateRequest(BaseModel):
 
 **データベースモデル（models/）:**
 ```python
-# テーブル定義
 class UserTable(Base):
     __tablename__ = 'users'
     id = Column(Integer, primary_key=True, autoincrement=True)
@@ -117,7 +119,6 @@ class UserTable(Base):
     email = Column(String(255), nullable=False, unique=True)
     created_at = Column(DateTime, nullable=False, default=datetime.utcnow)
 
-# Pydanticモデル（同ファイル内）
 class User(BaseModel):
     id: int
     name: str
@@ -182,10 +183,6 @@ export default function UsersPage() {
     // 初期化処理
   }, []);
 
-  const fetchUsers = async () => {
-    // API呼び出し
-  };
-
   return (
     <div className="flex flex-col">
       {/* JSX */}
@@ -196,7 +193,6 @@ export default function UsersPage() {
 
 **コンポーネント:**
 ```tsx
-// 型定義はファイル内で
 export type User = {
   id: number;
   name: string;
@@ -221,9 +217,7 @@ export default function UserCard({ user, onSelect }: Props) {
 ```tsx
 const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users`, {
   method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-  },
+  headers: { "Content-Type": "application/json" },
   body: JSON.stringify(formData),
 });
 
@@ -237,22 +231,9 @@ if (data.status === "ok") {
 }
 ```
 
-**ローカルストレージ:**
-```tsx
-// 保存
-localStorage.setItem("auth_token", token);
-
-// 取得
-const token = localStorage.getItem("auth_token");
-```
-
 ### スタイリング (Tailwind CSS)
 
 ```tsx
-// テーマカラー（プロジェクトに合わせて変更）
-<div className="bg-primary text-white">
-<div className="text-primary">
-
 // レスポンシブ
 <div className="flex flex-col sm:flex-row">
 
@@ -267,28 +248,19 @@ const token = localStorage.getItem("auth_token");
 ### APIレスポンス形式
 ```json
 // 成功
-{
-  "status": "ok",
-  "data": { ... }
-}
+{ "status": "ok", "data": { ... } }
 
 // エラー
-{
-  "status": "error",
-  "type": "validation",
-  "message": "エラーメッセージ"
-}
+{ "status": "error", "type": "validation", "message": "エラーメッセージ" }
 ```
 
 ### エラーメッセージ
 - ユーザー向けメッセージは**日本語**で記述
-- 例: `"入力内容を確認してください"`, `"処理に失敗しました"`
 
 ### コメント・ドキュメント
 - コメントは日本語可
 - docstringはGoogle形式（Args, Returns, Raises）
-- 例外クラスには日本語docstringを付与
 
 ### Git
-- コミットメッセージ: `[種別] 内容`（例: `[modify] ユーザー登録機能を改善`）
+- コミットメッセージ: `[種別] 内容`
 - 種別: `modify`, `fixed`, `add`, `remove` など

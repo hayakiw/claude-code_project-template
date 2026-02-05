@@ -1,3 +1,8 @@
+---
+name: common-tasks
+description: よくある作業手順（環境構築、機能追加、デプロイ）。開発作業の進め方を確認したい時に使用。
+---
+
 # よくある作業手順
 
 ## 環境構築
@@ -56,7 +61,6 @@ docker exec -it <container-name> /bin/bash
 
 **コード変更後の反映:**
 ```bash
-# Dockerコンテナを再ビルド
 docker-compose up -d --build
 ```
 

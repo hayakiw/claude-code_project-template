@@ -9,81 +9,26 @@
 
 ## 技術スタック
 
-- **フロントエンド**: Next.js (TypeScript), React, Tailwind CSS
-- **バックエンド**: Python 3.12+, FastAPI
-- **データベース**: <!-- 例: PostgreSQL, MySQL, MongoDB -->
-- **インフラ**: <!-- 例: Docker, AWS, Vercel -->
+**フロントエンド**
+- Next.js (TypeScript)
+- React
+- Tailwind CSS
 
-## 開発コマンド
+**バックエンド**
+- Python 3.12+
+- FastAPI
 
-### バックエンド
-```bash
-cd backend
+**データベース**
+<!-- 例: PostgreSQL, MySQL, MongoDB -->
 
-# 仮想環境作成・有効化
-python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
+**インフラ**
+<!-- 例: Docker, AWS, Vercel -->
 
-# 依存関係インストール
-pip install -r requirements.txt
-
-# 開発サーバー起動
-uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
-
-# テスト実行
-pytest tests/ -v
-
-# リント実行
-ruff check .
+## ドキュメント構成
 ```
-APIドキュメント: http://localhost:8000/docs
-
-### フロントエンド
-```bash
-cd frontend
-
-# 依存関係インストール
-npm install
-
-# 開発サーバー起動 (http://localhost:3000)
-npm run dev
-
-# 本番ビルド
-npm run build
-
-# リント実行
-npm run lint
+docs/
+├── 01_requirements.md      # 要件定義書
+├── 02_design.md            # 設計書
+├── 03_api_specification.md # API仕様書（オプション）
+└── 04_database_schema.md   # DB設計書（オプション）
 ```
-
-### 環境構築
-```bash
-# 環境変数ファイルをコピー
-cp -p backend/.env.example backend/.env
-cp -p frontend/.env.example frontend/.env
-
-# 各.envファイルに必要な値を設定
-```
-
-## 開発ドキュメント（.claude/）
-
-| ドキュメント | 内容 |
-|-------------|------|
-| [coding-standards.md](.claude/coding-standards.md) | コーディング規約・命名規則・コードパターン |
-| [project-structure.md](.claude/project-structure.md) | ディレクトリ構成・主要ファイルの役割・処理フロー |
-| [common-tasks.md](.claude/common-tasks.md) | よくある作業手順（環境構築、機能追加、デプロイ） |
-| [troubleshooting.md](.claude/troubleshooting.md) | よくあるエラーと対処法・FAQ |
-
-### カスタムコマンド（.claude/commands/）
-
-| コマンド | 内容 |
-|---------|------|
-| [/review](.claude/commands/review.md) | コードレビュー（品質・セキュリティ・パフォーマンス） |
-| [/test](.claude/commands/test.md) | テスト実行・動作確認手順 |
-
-## コーディング規約（要点）
-
-- エラーメッセージ・コメントは日本語
-- APIレスポンスは `{ status: "ok" | "error", ... }` 形式
-- バックエンド: PascalCaseクラス、snake_case関数、Google形式docstring
-- フロントエンド: PascalCaseコンポーネント、Tailwind CSS、`"use client"`
-- コミットメッセージ: `[種別] 内容`（例: `[modify] ログイン画面修正`）

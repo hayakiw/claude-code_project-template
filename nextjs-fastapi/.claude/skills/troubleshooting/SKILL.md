@@ -1,3 +1,8 @@
+---
+name: troubleshooting
+description: よくあるエラーと対処法、FAQ。エラーが発生した時、問題解決のヒントが欲しい時に使用。
+---
+
 # トラブルシューティング
 
 ## 環境構築時のエラー
@@ -241,9 +246,6 @@ A:
 
 A: lint/formatエラーを修正する
 ```bash
-# Lint実行
 npm run lint
-
-# Format実行（設定されている場合）
 npm run format
 ```

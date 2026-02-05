@@ -1,3 +1,8 @@
+---
+name: project-structure
+description: プロジェクトのディレクトリ構成と主要ファイルの役割。新しいファイルを追加する場所、既存コードの場所を知りたい時に使用。
+---
+
 # プロジェクト構成
 
 ## 全体構成
@@ -34,7 +39,6 @@ frontend/
 │   │   ├── Input.tsx
 │   │   └── Loading.tsx
 │   └── features/             # 機能別コンポーネント
-│       └── ...
 │
 ├── hooks/                    # カスタムフック
 │   └── useAuth.ts
@@ -106,8 +110,6 @@ backend/
 │   └── .env.example         # 環境変数テンプレート
 │
 ├── tests/                   # テスト
-│   └── ...
-│
 ├── Dockerfile
 ├── requirements.txt
 └── docker-compose.yml
@@ -124,17 +126,6 @@ backend/
 | `repositories/` | データベース操作 |
 | `models/` | データベースモデル定義 |
 | `schemas/` | リクエスト/レスポンスのバリデーション |
-
----
-
-## ドキュメント (`docs/`)
-
-```
-docs/
-├── api/                   # API仕様書
-├── design/                # 設計ドキュメント
-└── setup/                 # セットアップ手順
-```
 
 ---
 
