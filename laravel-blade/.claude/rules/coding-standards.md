@@ -17,7 +17,6 @@ app/
 │   └── Resources/      # APIリソース
 ├── Models/             # Eloquentモデル
 ├── Services/           # ビジネスロジック
-├── Repositories/       # データアクセス層（オプション）
 ├── Enums/              # 列挙型（PHP 8.1+）
 └── Exceptions/         # カスタム例外
 ```
