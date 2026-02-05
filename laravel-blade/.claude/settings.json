@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "Bash(pytest *)",
+      "Read(README.md)",
+      "Read(docs/**)"
+    ],
+    "deny": [
+      "Read(.env)",
+      "Read(.env.*)",
+      "Read(!.env.example)",
+      "Read(*.key)",
+      "Read(*.pem)",
+      "Read(.mcp.json)",
+      "Read(!.mcp.json.example)",
+      "Read(secrets/**)",
+      "Read(credentials/**)"
+    ]
+  }
+}
