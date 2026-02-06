@@ -19,10 +19,10 @@
 - FastAPI
 
 **データベース**
-<!-- 例: PostgreSQL, MySQL, MongoDB -->
+- MySQL 8.0（Docker経由、ポート3306）
 
 **インフラ**
-<!-- 例: Docker, AWS, Vercel -->
+- Docker（バックエンドは `backend/docker-compose.yml` で起動）
 
 ## ドキュメント構成
 ```
