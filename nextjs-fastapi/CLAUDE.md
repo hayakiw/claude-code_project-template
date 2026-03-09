@@ -22,7 +22,7 @@
 - MySQL 8.0（Docker経由、ポート3306）
 
 **インフラ**
-- Docker（バックエンドは `backend/docker-compose.yml` で起動）
+- Docker（ルートの `docker-compose.yml` で起動、設定ファイルは `docker/` 配下）
 
 ## ドキュメント構成
 ```

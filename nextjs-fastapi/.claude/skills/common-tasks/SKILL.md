@@ -17,15 +17,16 @@ cp -p frontend/.env.example frontend/.env
 # 2. 環境変数を設定
 # 各.envファイルに必要な値を設定
 
-# 3. バックエンド起動
-cd backend
-# Docker使用時
+# 3. Docker で全サービス起動（推奨）
 docker-compose up -d --build
-# または直接起動
+
+# または個別にローカル起動
+# バックエンド
+cd backend
 pip install -r requirements.txt
 uvicorn app.main:app --reload
 
-# 4. フロントエンド起動
+# フロントエンド
 cd frontend
 npm install
 npm run dev
@@ -44,7 +45,7 @@ npm run dev
 
 **Dockerコンテナの操作:**
 ```bash
-cd backend
+# プロジェクトルートで実行
 
 # 起動
 docker-compose up -d --build
@@ -54,9 +55,11 @@ docker-compose down
 
 # ログ確認
 docker-compose logs -f api
+docker-compose logs -f frontend
 
 # コンテナに入る
-docker exec -it <container-name> /bin/bash
+docker exec -it fastapi-app /bin/bash
+docker exec -it nextjs-app /bin/sh
 ```
 
 **コード変更後の反映:**
@@ -210,7 +213,6 @@ cd frontend
 npm run build
 
 # バックエンド（本番用Docker設定が必要）
-cd backend
 docker-compose -f docker-compose.prod.yml up -d --build
 ```
 

@@ -45,7 +45,7 @@ netstat -an | grep 8000
 対処法:
 ```bash
 # データディレクトリをクリア（データが消えるので注意）
-rm -rf ./db/data/*
+rm -rf ./docker/mysql/data/*
 docker-compose up -d --build
 ```
 
